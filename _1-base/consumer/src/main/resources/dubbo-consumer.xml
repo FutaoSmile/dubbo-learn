@@ -40,6 +40,8 @@
     <dubbo:reference interface="com.futao.base.api.service.UserAddressService" id="userAddressServiceGeneric"
                      version="*" generic="true"/>
 
+    <!--隐式传参-->
+    <dubbo:reference interface="com.futao.base.api.service.AttachmentService" id="attachmentService"/>
 
     <!--消费者的统一配置，cluster->集群容错-->
     <dubbo:consumer check="false" timeout="1000" version="*" cluster="failover"/>

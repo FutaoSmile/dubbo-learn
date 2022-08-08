@@ -1,0 +1,1 @@
+dubboUserFilter=com.futao.base.consumer.filter.UserInfoFilter

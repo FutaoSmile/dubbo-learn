@@ -15,3 +15,8 @@
 - 泛化调用：
     - 生产者不需要改动
     - 消费者可以不依赖api jar包，但是还是需要知道service的全路径，方法名，参数类型等
+- 隐式传参
+    - 可以在具体service中通过RpcContext设置attachment
+    - 也可以通过SPI、Filter的方式
+    - 可以使用这种方式来传递当前登录的用户信息
+      - 搭配mybatis-plus自动填充效果更佳

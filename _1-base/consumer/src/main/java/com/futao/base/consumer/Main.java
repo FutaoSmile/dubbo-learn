@@ -1,5 +1,7 @@
 package com.futao.base.consumer;
 
+import com.futao.base.api.service.AttachmentService;
+import org.apache.dubbo.rpc.RpcContext;
 import org.apache.dubbo.rpc.service.GenericService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -29,8 +31,12 @@ public class Main {
         //     System.out.println(((ValidationException) e).getMessage());
         // }
 
-        GenericService genericService = (GenericService) classPathXmlApplicationContext.getBean("userAddressServiceGeneric");
-        System.out.println(genericService.$invoke("byUserId", new String[]{String.class.getName()}, new Object[]{"1"}));
+        // GenericService genericService = (GenericService) classPathXmlApplicationContext.getBean("userAddressServiceGeneric");
+        // System.out.println(genericService.$invoke("byUserId", new String[]{String.class.getName()}, new Object[]{"1"}));
+
+
+        RpcContext.getClientAttachment().setAttachment("user.name", "李达康");
+        classPathXmlApplicationContext.getBean(AttachmentService.class).attachment();
 
     }
 }

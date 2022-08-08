@@ -31,7 +31,10 @@
     <dubbo:service interface="com.futao.base.api.service.GroupService" ref="groupService" group="gb"/>
 
     <!--校验-->
-    <dubbo:service interface="com.futao.base.api.service.ValidService" ref="validService" />
+    <dubbo:service interface="com.futao.base.api.service.ValidService" ref="validService"/>
+
+    <!--隐式传参-->
+    <dubbo:service interface="com.futao.base.api.service.AttachmentService" ref="attachmentService"/>
 
     <!--消费者的统一配置-->
     <dubbo:provider timeout="1000"/>
