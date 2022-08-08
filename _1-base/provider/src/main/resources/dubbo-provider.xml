@@ -27,6 +27,9 @@
     <!--演示本地存根-->
     <dubbo:service interface="com.futao.base.api.service.LocalStubService" ref="localStubService"/>
 
+    <!--分组-->
+    <dubbo:service interface="com.futao.base.api.service.GroupService" ref="groupService" group="ga"/>
+
     <!--消费者的统一配置-->
     <dubbo:provider timeout="1000"/>
 </beans>
