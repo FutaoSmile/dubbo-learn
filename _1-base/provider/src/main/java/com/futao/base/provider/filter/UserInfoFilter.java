@@ -17,16 +17,16 @@ public class UserInfoFilter implements Filter {
 
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
-        RpcContext rpcContext = RpcContext.getContext();
-        if (rpcContext.isConsumerSide()) {
+        RpcServiceContext rpcServiceContext = RpcContext.getServiceContext();
+        if (rpcServiceContext.isConsumerSide()) {
             // 当前是消费者
             // 设置traceId
             String value = UUID.randomUUID().toString();
-            rpcContext.setAttachment(USER_ID, value);
+            rpcServiceContext.setAttachment(USER_ID, value);
             System.out.println("设置userId:" + value);
         } else {
             // 当前是生产者
-            String attachment = rpcContext.getAttachment(USER_ID);
+            String attachment = rpcServiceContext.getAttachment(USER_ID);
             System.out.println("当前用户为:" + attachment);
         }
         return invoker.invoke(invocation);
