@@ -23,8 +23,19 @@
     <!--<dubbo:provider token="true"/>-->
 
     <!--引用服务-->
-    <dubbo:reference interface="com.futao.base.api.service.UserAddressService" id="userAddressService"/>
+    <!--version=* 表示随机调用所有版本的接口-->
+    <dubbo:reference interface="com.futao.base.api.service.UserAddressService" id="userAddressService" version="*"/>
+    <!--演示本地存根-->
+    <dubbo:reference interface="com.futao.base.api.service.LocalStubService" id="localStubService" version="*"
+                     stub="com.futao.base.consumer.service.impl.LocalStubServiceStub"/>
 
 
+    <!--消费者的统一配置-->
+    <dubbo:consumer check="false" timeout="1000" version="*"/>
+
+
+    <!--级别一致的情况下：消费者配置的优先级高于生产者-->
+    <!--比如生产者配置的超时时间在接口上，而消费者的超时时间设置在全局配置，那么还是以生产者的超时时间为准-->
+    <!--总结：精确优先、消费者优先-->
 
 </beans>

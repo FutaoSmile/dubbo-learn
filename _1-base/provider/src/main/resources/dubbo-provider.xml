@@ -23,6 +23,10 @@
     <!--<dubbo:provider token="true"/>-->
 
     <!--暴露的服务-->
-    <dubbo:service interface="com.futao.base.api.service.UserAddressService" ref="userAddressService"/>
+    <dubbo:service interface="com.futao.base.api.service.UserAddressService" ref="userAddressService" version="1.0.0"/>
+    <!--演示本地存根-->
+    <dubbo:service interface="com.futao.base.api.service.LocalStubService" ref="localStubService"/>
 
+    <!--消费者的统一配置-->
+    <dubbo:provider timeout="1000"/>
 </beans>

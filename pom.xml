@@ -11,6 +11,7 @@
     <modules>
 
         <module>_1-base</module>
+        <module>_2-springboot</module>
     </modules>
 
     <properties>
