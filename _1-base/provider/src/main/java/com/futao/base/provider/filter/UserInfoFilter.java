@@ -18,6 +18,7 @@ public class UserInfoFilter implements Filter {
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
         RpcServiceContext rpcServiceContext = RpcContext.getServiceContext();
+        System.out.println("serviceName:methodName:" + invocation.getServiceName() + invocation.getMethodName());
         if (rpcServiceContext.isConsumerSide()) {
             // 当前是消费者
             // 设置traceId

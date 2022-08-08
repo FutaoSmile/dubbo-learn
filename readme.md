@@ -19,4 +19,6 @@
     - 可以在具体service中通过RpcContext设置attachment
     - 也可以通过SPI、Filter的方式
     - 可以使用这种方式来传递当前登录的用户信息
-      - 搭配mybatis-plus自动填充效果更佳
+        - 搭配mybatis-plus自动填充效果更佳
+- 直连提供者：
+    - 绕过注册中心

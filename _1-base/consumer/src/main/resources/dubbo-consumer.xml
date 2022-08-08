@@ -43,8 +43,13 @@
     <!--隐式传参-->
     <dubbo:reference interface="com.futao.base.api.service.AttachmentService" id="attachmentService"/>
 
+    <!--直连提供者-->
+    <dubbo:reference interface="com.futao.base.api.service.DirectLinkService" id="directLinkService" version="0.0.0"
+                     url="dubbo://localhost:20088"/>
+
+
     <!--消费者的统一配置，cluster->集群容错-->
-    <dubbo:consumer check="false" timeout="1000" version="*" cluster="failover"/>
+    <dubbo:consumer check="false" timeout="1000" cluster="failover"/>
 
 
     <!--级别一致的情况下：消费者配置的优先级高于生产者-->
