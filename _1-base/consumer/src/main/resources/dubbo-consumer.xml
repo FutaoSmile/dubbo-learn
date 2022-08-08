@@ -47,6 +47,12 @@
     <dubbo:reference interface="com.futao.base.api.service.DirectLinkService" id="directLinkService" version="0.0.0"
                      url="dubbo://localhost:20088"/>
 
+    <!--调用触发事件通知-->
+    <dubbo:reference interface="com.futao.base.api.service.EventCallbackService" id="eventCallbackService">
+        <dubbo:method name="success" oninvoke="eventCallback.onInvoke" onreturn="eventCallback.onReturn" onthrow="eventCallback.onThrow"/>
+        <dubbo:method name="excep" oninvoke="eventCallback.onInvoke" onreturn="eventCallback.onReturn" onthrow="eventCallback.onThrow"/>
+    </dubbo:reference>
+
 
     <!--消费者的统一配置，cluster->集群容错-->
     <dubbo:consumer check="false" timeout="1000" cluster="failover"/>

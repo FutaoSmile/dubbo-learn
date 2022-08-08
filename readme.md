@@ -22,3 +22,6 @@
         - 搭配mybatis-plus自动填充效果更佳
 - 直连提供者：
     - 绕过注册中心
+- 调用触发事件通知
+    - 消费者可以在调用前、调用后、异常时，通过onInvoke, onReturn, onThrow注册事件通知
+    - 类似于AOP

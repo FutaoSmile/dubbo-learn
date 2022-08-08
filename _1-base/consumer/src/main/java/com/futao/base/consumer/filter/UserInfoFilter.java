@@ -3,6 +3,7 @@ package com.futao.base.consumer.filter;
 import org.apache.dubbo.common.constants.CommonConstants;
 import org.apache.dubbo.common.extension.Activate;
 import org.apache.dubbo.rpc.*;
+import org.springframework.util.StringUtils;
 
 import java.util.UUID;
 
@@ -18,7 +19,10 @@ public class UserInfoFilter implements Filter {
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
         RpcServiceContext rpcServiceContext = RpcContext.getServiceContext();
-        System.out.println("serviceName:methodName:" + invocation.getServiceName() + "-" + invocation.getMethodName());
+        String serviceName = invocation.getServiceName();
+        if (!StringUtils.isEmpty(serviceName) && !serviceName.startsWith("org.apache.dubbo")) {
+            System.out.println("serviceName:methodName:" + serviceName + "-" + invocation.getMethodName());
+        }
         if (rpcServiceContext.isConsumerSide()) {
             // 当前是消费者
             // 设置traceId

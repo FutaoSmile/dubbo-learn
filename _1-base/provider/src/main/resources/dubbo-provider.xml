@@ -37,7 +37,10 @@
     <dubbo:service interface="com.futao.base.api.service.AttachmentService" ref="attachmentService"/>
 
     <!--直连提供者-->
-    <dubbo:service interface="com.futao.base.api.service.DirectLinkService" ref="directLinkService" />
+    <dubbo:service interface="com.futao.base.api.service.DirectLinkService" ref="directLinkService"/>
+
+    <!--调用触发事件通知-->
+    <dubbo:service interface="com.futao.base.api.service.EventCallbackService" ref="eventCallbackService"/>
 
     <!--消费者的统一配置-->
     <dubbo:provider timeout="1000"/>

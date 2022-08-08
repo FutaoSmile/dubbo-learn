@@ -2,6 +2,7 @@ package com.futao.base.consumer;
 
 import com.futao.base.api.service.AttachmentService;
 import com.futao.base.api.service.DirectLinkService;
+import com.futao.base.api.service.EventCallbackService;
 import org.apache.dubbo.rpc.RpcContext;
 import org.apache.dubbo.rpc.service.GenericService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -40,6 +41,10 @@ public class Main {
         // classPathXmlApplicationContext.getBean(AttachmentService.class).attachment();
 
 
-        System.out.println(classPathXmlApplicationContext.getBean(DirectLinkService.class).sayHi());
+        // System.out.println(classPathXmlApplicationContext.getBean(DirectLinkService.class).sayHi());
+
+
+        System.out.println(classPathXmlApplicationContext.getBean(EventCallbackService.class).success("我是参数"));
+        System.out.println(classPathXmlApplicationContext.getBean(EventCallbackService.class).excep("我是参数"));
     }
 }
