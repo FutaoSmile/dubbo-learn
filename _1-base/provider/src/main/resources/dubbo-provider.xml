@@ -14,7 +14,7 @@
     <!--dubbo服务的名字，不要和别的服务同名-->
     <dubbo:application name="base-provider"/>
     <!--指定注册中心的地址-->
-    <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
+    <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181" timeout="2000"/>
     <!--通信规则，协议，端口-->
     <dubbo:protocol name="dubbo" port="20080"/>
     <!--监控中心，从注册中心自动发现-->
