@@ -33,11 +33,12 @@
     <dubbo:reference interface="com.futao.base.api.service.GroupService" id="groupService" group="*" merger="true"/>
 
     <!--参数校验-->
-    <dubbo:reference interface="com.futao.base.api.service.ValidService" id="validService" validation="true"/>
+    <dubbo:reference interface="com.futao.base.api.service.ValidService" id="validService" validation="true"
+                     cluster="failfast"/>
 
 
-    <!--消费者的统一配置-->
-    <dubbo:consumer check="false" timeout="1000" version="*"/>
+    <!--消费者的统一配置，cluster->集群容错-->
+    <dubbo:consumer check="false" timeout="1000" version="*" cluster="failover"/>
 
 
     <!--级别一致的情况下：消费者配置的优先级高于生产者-->
