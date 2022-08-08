@@ -2,11 +2,13 @@ package com.futao.base.consumer;
 
 import com.futao.base.api.dto.UserAddress;
 import com.futao.base.api.service.GroupService;
+import com.futao.base.api.service.ValidService;
 import com.futao.base.consumer.service.OrderService;
 import com.futao.base.consumer.service.impl.GroupServiceConsumer;
 import com.futao.base.consumer.service.impl.LocalStubCallService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.validation.ValidationException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -27,5 +29,13 @@ public class Main {
 
         classPathXmlApplicationContext.getBean(GroupServiceConsumer.class).ga();
         classPathXmlApplicationContext.getBean(GroupServiceConsumer.class).gb();
+
+
+        try {
+            classPathXmlApplicationContext.getBean(ValidService.class).addUserAddress(new UserAddress());
+            classPathXmlApplicationContext.getBean(ValidService.class).updateUserAddress(new UserAddress());
+        } catch (Exception e) {
+            System.out.println(((ValidationException) e).getMessage());
+        }
     }
 }

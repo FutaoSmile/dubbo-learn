@@ -16,7 +16,7 @@
     <!--指定注册中心的地址-->
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181" timeout="2000"/>
     <!--通信规则，协议，端口-->
-    <dubbo:protocol name="dubbo" port="20080"/>
+    <dubbo:protocol name="dubbo" port="20088"/>
     <!--监控中心，从注册中心自动发现-->
     <dubbo:monitor protocol="registry"/>
 
@@ -28,7 +28,10 @@
     <dubbo:service interface="com.futao.base.api.service.LocalStubService" ref="localStubService"/>
 
     <!--分组-->
-    <dubbo:service interface="com.futao.base.api.service.GroupService" ref="groupService" group="ga"/>
+    <dubbo:service interface="com.futao.base.api.service.GroupService" ref="groupService" group="gb"/>
+
+    <!--校验-->
+    <dubbo:service interface="com.futao.base.api.service.ValidService" ref="validService" />
 
     <!--消费者的统一配置-->
     <dubbo:provider timeout="1000"/>

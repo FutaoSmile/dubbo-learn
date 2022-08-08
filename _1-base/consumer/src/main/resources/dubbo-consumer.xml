@@ -29,7 +29,12 @@
     <dubbo:reference interface="com.futao.base.api.service.LocalStubService" id="localStubService" version="*"
                      stub="com.futao.base.consumer.service.impl.LocalStubServiceStub"/>
 
-    <dubbo:reference interface="com.futao.base.api.service.GroupService" id="groupService" group="gb"/>
+    <!--分组-->
+    <dubbo:reference interface="com.futao.base.api.service.GroupService" id="groupService" group="*" merger="true"/>
+
+    <!--参数校验-->
+    <dubbo:reference interface="com.futao.base.api.service.ValidService" id="validService" validation="true"/>
+
 
     <!--消费者的统一配置-->
     <dubbo:consumer check="false" timeout="1000" version="*"/>
