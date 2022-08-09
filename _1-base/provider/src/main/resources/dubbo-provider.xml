@@ -14,7 +14,12 @@
     <!--dubbo服务的名字，不要和别的服务同名-->
     <dubbo:application name="base-provider"/>
     <!--指定注册中心的地址-->
-    <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181" timeout="2000"/>
+    <dubbo:registry id="hangzhou" address="zookeeper://${zookeeper.address:127.0.0.1}:2181" timeout="2000"
+                    default="true"/>
+
+    <dubbo:registry id="beijing" address="zookeeper://${zookeeper.address:127.0.0.1}:2182" timeout="2000"
+                    default="false"/>
+
     <!--通信规则，协议，端口-->
     <dubbo:protocol name="dubbo" port="20088"/>
     <!--监控中心，从注册中心自动发现-->
@@ -23,9 +28,11 @@
     <!--<dubbo:provider token="true"/>-->
 
     <!--暴露的服务-->
-    <dubbo:service interface="com.futao.base.api.service.UserAddressService" ref="userAddressService" version="1.0.0"/>
+    <dubbo:service interface="com.futao.base.api.service.UserAddressService" ref="userAddressService" version="1.0.0"
+                   registry="hangzhou"/>
     <!--演示本地存根-->
-    <dubbo:service interface="com.futao.base.api.service.LocalStubService" ref="localStubService"/>
+    <dubbo:service interface="com.futao.base.api.service.LocalStubService" ref="localStubService"
+                   registry="hangzhou,beijing"/>
 
     <!--分组-->
     <dubbo:service interface="com.futao.base.api.service.GroupService" ref="groupService" group="gb"/>
