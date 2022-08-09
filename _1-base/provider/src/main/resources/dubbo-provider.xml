@@ -17,8 +17,8 @@
     <dubbo:registry id="hangzhou" address="zookeeper://${zookeeper.address:127.0.0.1}:2181" timeout="2000"
                     default="true"/>
 
-    <dubbo:registry id="beijing" address="zookeeper://${zookeeper.address:127.0.0.1}:2182" timeout="2000"
-                    default="false"/>
+<!--    <dubbo:registry id="beijing" address="zookeeper://${zookeeper.address:127.0.0.1}:2182" timeout="2000"-->
+<!--                    default="false"/>-->
 
     <!--通信规则，协议，端口-->
     <dubbo:protocol name="dubbo" port="20088"/>
@@ -32,7 +32,7 @@
                    registry="hangzhou"/>
     <!--演示本地存根-->
     <dubbo:service interface="com.futao.base.api.service.LocalStubService" ref="localStubService"
-                   registry="hangzhou,beijing"/>
+                   registry="hangzhou"/>
 
     <!--分组-->
     <dubbo:service interface="com.futao.base.api.service.GroupService" ref="groupService" group="gb"/>
