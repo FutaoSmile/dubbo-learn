@@ -16,7 +16,7 @@
     <!--指定注册中心的地址-->
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
     <!--通信规则，协议，端口-->
-    <dubbo:protocol name="dubbo" port="20081"/>
+    <dubbo:protocol name="dubbo" port="20081" accesslog="true"/>
     <!--监控中心，从注册中心自动发现-->
     <dubbo:monitor protocol="registry"/>
 

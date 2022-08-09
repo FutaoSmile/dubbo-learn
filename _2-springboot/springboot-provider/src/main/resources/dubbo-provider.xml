@@ -7,8 +7,6 @@
 
     <!--参考手册：https://dubbo.apache.org/zh/docs3-v2/java-sdk/reference-manual/config/properties/ -->
 
-    <context:component-scan base-package="com.futao.base.provider"/>
-
     <context:property-placeholder/>
 
     <!--dubbo服务的名字，不要和别的服务同名-->
@@ -21,7 +19,8 @@
     <!--                    default="false"/>-->
 
     <!--通信规则，协议，端口-->
-    <dubbo:protocol name="dubbo" port="20088" accesslog="true"/>
+    <!--    <dubbo:protocol name="dubbo" port="20088" accesslog="true"/>-->
+    <dubbo:protocol name="http" port="8081" server="jetty"/>
     <!--监控中心，从注册中心自动发现-->
     <dubbo:monitor protocol="registry"/>
 
