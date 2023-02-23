@@ -1,0 +1,15 @@
+POST http://localhost:8088/gateway
+Content-Type: application/json
+
+{
+  "interfaceName": "com.futao.base.api.service.ValidService",
+  "methodName": "addUserAddress",
+  "paramType": [
+    "com.futao.base.api.dto.UserAddress"
+  ],
+  "params": [
+    {
+      "username": "阿依土鳖公主"
+    }
+  ]
+}

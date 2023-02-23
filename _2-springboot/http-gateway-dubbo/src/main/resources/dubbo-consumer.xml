@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--参考手册：https://dubbo.apache.org/zh/docs3-v2/java-sdk/reference-manual/config/properties/ -->
+
+    <context:property-placeholder/>
+
+    <!--dubbo服务的名字，不要和别的服务同名-->
+    <dubbo:application name="http-gateway-dubbo" owner="futao" organization="架构部"/>
+    <!--指定注册中心的地址-->
+    <dubbo:registry id="hangzhou" address="zookeeper://${zookeeper.address:127.0.0.1}:2181" timeout="2000"
+                    default="true"/>
+
+    <!--    <dubbo:registry id="beijing" address="zookeeper://${zookeeper.address:127.0.0.1}:2182" timeout="2000"-->
+    <!--                    default="false"/>-->
+
+    <!--通信规则，协议，端口-->
+    <dubbo:protocol name="dubbo" port="20089" accesslog="true"/>
+    <!--    <dubbo:protocol name="http" port="8081" server="jetty"/>-->
+    <!--监控中心，从注册中心自动发现-->
+    <dubbo:monitor protocol="registry"/>
+</beans>
